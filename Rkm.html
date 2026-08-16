@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ṘṳṖḕṠḧ ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+margin:0;
+min-height:100vh;
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#071b16,#087f4d,#19a974);
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+.card{
+width:92%;
+max-width:430px;
+padding:30px 22px;
+text-align:center;
+background:rgba(255,255,255,.14);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.25);
+border-radius:28px;
+box-shadow:0 20px 60px #0007;
+z-index:5;
+}
+
+h1{
+font-size:30px;
+margin:5px 0 15px;
+}
+
+.message{
+font-size:19px;
+line-height:1.8;
+}
+
+input{
+width:100%;
+padding:15px;
+border:0;
+border-radius:14px;
+font-size:17px;
+text-align:center;
+outline:none;
+margin:10px 0;
+}
+
+button{
+width:100%;
+border:0;
+padding:15px;
+margin-top:10px;
+border-radius:15px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.unlock{
+background:#d8ffe7;
+color:#087344;
+}
+
+.yes{
+background:#b9ffd5;
+color:#087344;
+}
+
+.no{
+background:#ffd4d4;
+color:#a32222;
+}
+
+button:active{
+transform:scale(.95);
+}
+
+#main,
+#happy,
+#sad,
+#request{
+display:none;
+}
+
+#login{
+display:block;
+}
+
+.lock{
+font-size:65px;
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+50%{transform:scale(1.15)}
+}
+
+.money{
+font-size:55px;
+margin:15px;
+animation:pulse 1.5s infinite;
+}
+
+.amount{
+font-size:48px;
+font-weight:bold;
+color:#d8ffe7;
+margin:15px 0;
+}
+
+.requestBox{
+background:rgba(0,0,0,.18);
+padding:22px;
+border-radius:20px;
+margin-top:15px;
+}
+
+.final{
+font-size:58px;
+margin:10px;
+}
+
+#animationArea{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:20;
+}
+
+.emoji{
+position:absolute;
+font-size:35px;
+animation:fly 2.5s ease-out forwards;
+}
+
+@keyframes fly{
+0%{
+transform:translate(0,0) scale(.4) rotate(0);
+opacity:1;
+}
+100%{
+transform:
+translate(
+calc((var(--x) - 50) * 1vw),
+calc((var(--y) - 50) * 1vh)
+)
+scale(1.5)
+rotate(360deg);
+opacity:0;
+}
+}
+
+#error{
+color:#ffd0d0;
+font-size:14px;
+margin-top:8px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="animationArea"></div>
+
+<div class="card">
+
+<!-- PASSWORD -->
+
+<div id="login">
+
+<div class="lock">🔐</div>
+
+<h1>ṘṳṖḕṠḧ ❤️</h1>
+
+<p class="message">
+यो message हेर्न password चाहिन्छ 😜
+</p>
+
+<input
+type="password"
+id="password"
+placeholder="Password लेख्नुहोस् 🔑"
+>
+
+<button class="unlock" onclick="unlock()">
+🔓 Open
+</button>
+
+<div id="error"></div>
+
+</div>
+
+
+<!-- FIRST MESSAGE -->
+
+<div id="main">
+
+<h1>ṘṳṖḕṠḧ ❤️</h1>
+
+<div class="message">
+
+<strong>एउटा help गर्न सक्छौ? 🥺</strong>
+
+<br><br>
+
+यदि सक्छौ भने गरिदेऊ,
+<br>
+सक्दैनौ भने कुनै problem छैन। 😊
+
+</div>
+
+<button class="yes" onclick="yesAnswer()">
+❤️ हुन्छ, गर्छु
+</button>
+
+<button class="no" onclick="noAnswer()">
+💔 सक्दिनँ
+</button>
+
+</div>
+
+
+<!-- HAPPY -->
+
+<div id="happy">
+
+<div class="final">🥳😍❤️🎉</div>
+
+<h1>Thank You! 🥰</h1>
+
+<p class="message">
+मलाई थाहा थियो तिमीले help गर्छौ भनेर। 😭❤️
+</p>
+
+</div>
+
+
+<!-- REQUEST -->
+
+<div id="request">
+
+<div class="money">💸💰</div>
+
+<h1>अब एउटा सानो Request 🥺</h1>
+
+<div class="requestBox">
+
+<p class="message">
+मलाई अहिले
+</p>
+
+<div class="amount">
+रु. १,०००
+</div>
+
+<p class="message">
+चाहिएको छ। 🙏❤️
+</p>
+
+<p>
+सम्भव छ भने help गरिदेऊ न।
+<br>
+मिल्नेबित्तिकै फिर्ता गरिदिन्छु। 🤝
+</p>
+
+</div>
+
+</div>
+
+
+<!-- SAD -->
+
+<div id="sad">
+
+<div class="final">😢😭🥺💔</div>
+
+<h1>ठीक छ साथी ❤️</h1>
+
+<p class="message">
+सक्दैनौ भने कुनै problem छैन। 😊
+<br><br>
+साथी त साथी नै हो। 🤝❤️
+</p>
+
+</div>
+
+</div>
+
+
+<script>
+
+function unlock(){
+
+let password=
+document.getElementById("password").value;
+
+if(password==="binita"){
+
+document.getElementById("login").style.display="none";
+document.getElementById("main").style.display="block";
+
+}else{
+
+document.getElementById("error").innerHTML=
+"❌ Wrong password 😜";
+
+}
+
+}
+
+
+document.getElementById("password")
+.addEventListener("keydown",function(e){
+
+if(e.key==="Enter"){
+unlock();
+}
+
+});
+
+
+function createEmoji(emojis){
+
+const area=
+document.getElementById("animationArea");
+
+for(let i=0;i<40;i++){
+
+let e=document.createElement("div");
+
+e.className="emoji";
+
+e.innerHTML=
+emojis[Math.floor(Math.random()*emojis.length)];
+
+e.style.left="50%";
+e.style.top="50%";
+
+e.style.setProperty(
+"--x",
+Math.floor(Math.random()*200-100)
+);
+
+e.style.setProperty(
+"--y",
+Math.floor(Math.random()*200-100)
+);
+
+e.style.animationDelay=
+(Math.random()*0.6)+"s";
+
+area.appendChild(e);
+
+setTimeout(()=>{
+e.remove();
+},3500);
+
+}
+
+}
+
+
+function yesAnswer(){
+
+createEmoji([
+"🥳","😍","❤️","😊","🎉",
+"💚","🤩","😘","💖","✨"
+]);
+
+document.getElementById("main").style.display="none";
+document.getElementById("happy").style.display="block";
+
+setTimeout(()=>{
+
+document.getElementById("happy").style.display="none";
+document.getElementById("request").style.display="block";
+
+},2800);
+
+}
+
+
+function noAnswer(){
+
+createEmoji([
+"😢","😭","🥺","💔",
+"😔","😞","💧"
+]);
+
+document.getElementById("main").style.display="none";
+document.getElementById("sad").style.display="block";
+
+}
+
+</script>
+
+</body>
+  </html>
